@@ -4,7 +4,29 @@
     <meta charset="UTF-8">
     <title>Realtor Pugh Pugh</title>
 </head>
+<h1>Hello {{ username }}!</h1>
+
 <body>
-    <h1>Hello World!</h1>
+    <table style="width:100%">
+        <tr>
+            <th>CTQ's</th>
+            <th>Rural</th>
+            <th>Spacious</th>
+            <th>Cheap</th>
+            <th>Total</th>
+        </tr>
+
+        {% for listing in listings %}
+        <tr>
+            <td>{{ listing.listing }}</td>
+                {% for rate in listing.rating %}
+                    <td>{{ rate }}</td>
+                {% endfor %}
+        </tr>
+        {% endfor %}
+
+
+
+    </table>
 </body>
 </html>
