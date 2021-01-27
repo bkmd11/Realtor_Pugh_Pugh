@@ -10,4 +10,10 @@ def index():
         , {'listing': 'B', 'rating': ['-', '+', '=']}
     ]
 
-    return render_template('index.html', title='Home Page', username='Brian', listings=listings)
+    col_headers = ['Listings', 'Rural', 'Cheap', 'Spacious', 'Total']
+
+    return render_template('index.html',
+                           title='Home Page',
+                           username='Brian',
+                           listings=listings,
+                           col_headers=col_headers)

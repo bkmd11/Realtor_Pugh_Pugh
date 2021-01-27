@@ -5,22 +5,21 @@
     <title>Realtor Pugh Pugh</title>
 </head>
 <h1>Hello {{ username }}!</h1>
-
+<h2>Here are your current listings:</h2>
 <body>
     <table style="width:100%">
+        <caption>CTQ's</caption>
         <tr>
-            <th>CTQ's</th>
-            <th>Rural</th>
-            <th>Spacious</th>
-            <th>Cheap</th>
-            <th>Total</th>
+            {% for head in col_headers %}
+                <th>{{ head }}</th>
+            {% endfor %}
         </tr>
 
         {% for listing in listings %}
         <tr>
-            <td>{{ listing.listing }}</td>
+            <td align='center'>{{ listing.listing }}</td>
                 {% for rate in listing.rating %}
-                    <td>{{ rate }}</td>
+                    <td align='center'>{{ rate }}</td>
                 {% endfor %}
         </tr>
         {% endfor %}
