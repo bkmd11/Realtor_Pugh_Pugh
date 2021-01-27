@@ -6,8 +6,8 @@ from app import pugh_app
 @pugh_app.route('/index', methods=['GET', 'POST'])
 def index():
     listings = [
-        {'listing': 'A', 'rating': ['+', '=', '-']}
-        , {'listing': 'B', 'rating': ['-', '+', '=']}
+        {'listing': 'A', 'rating': ['+', '=', '+', '++']}
+        , {'listing': 'B', 'rating': ['-', '+', '=', '=']}
     ]
 
     col_headers = ['Listings', 'Rural', 'Cheap', 'Spacious', 'Total']
@@ -17,3 +17,5 @@ def index():
                            username='Brian',
                            listings=listings,
                            col_headers=col_headers)
+
+
