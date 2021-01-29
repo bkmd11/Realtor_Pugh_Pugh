@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    New Listing
+</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.listing_name.label }}<br>
+            {{ (form.listing_name(size=32)) }}<br>
+            {% for error in form.listing_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {% for i in ctq %}
+                {{ ctq[loop.index0] }}
+                {{ form.ctq_1 }}
+            {% endfor %}
+        </p>
+    </form>
+</html>
