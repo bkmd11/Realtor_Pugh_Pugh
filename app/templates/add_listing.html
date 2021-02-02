@@ -57,7 +57,7 @@
             </p>
             <p>
                 {% if ctq[4] | length != 0 %}
-                    {{ ctq[5] }}<br>
+                    {{ ctq[4] }}<br>
                     {{ form.ctq_5.label }}
                     {{ (form.ctq_5(size=32)) }}<br>
                     {% for error in form.ctq_5.errors %}
@@ -77,7 +77,7 @@
             </p>
             <p>
                 {% if ctq[6] | length != 0 %}
-                    {{ ctq[7] }}<br>
+                    {{ ctq[6] }}<br>
                     {{ form.ctq_7.label }}
                     {{ (form.ctq_7(size=32)) }}<br>
                     {% for error in form.ctq_7.errors %}
