@@ -62,8 +62,8 @@ def add_listing():
 
     for i in ctq:
         setattr(F, i, IntegerField(label=i, validators=[AnyOf([1, 5, 9])]))
-    setattr(F, 'submit', SubmitField('Update')
-)
+    setattr(F, 'submit', SubmitField('Update'))
+
     form = F()
 
     if form.validate_on_submit():
