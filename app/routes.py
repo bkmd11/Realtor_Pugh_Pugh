@@ -14,12 +14,6 @@ from app.forms import AddForm, LoginForm
 @login_required
 def index():
     listings = current_user.user_listings()
-   # rating = json.loads(listing.rating)
-   # total = sum(rating)
-   # rating.append(total)
-   #  listings = [
-   #      {'listing': listing.listing_name, 'rating': rating}
-   #  ]
     col_headers = current_user.ctq
 
     return render_template('index.html',
@@ -51,7 +45,7 @@ def login():
 @login_required
 def add_listing():
     u = User.query.get(1)
-    ctq = json.loads(u.ctq)
+    ctq = current_user.ctq
 
     form = AddForm()
 
@@ -59,7 +53,7 @@ def add_listing():
         l = form.listing_name.data
         r = [form.ctq_1.data, form.ctq_2.data, form.ctq_3.data]
 
-        nu = Listing(listing_name=l, user_id=u.id, rating=json.dumps(r))
+        nu = Listing(listing_name=l, user_id=u.id, rating=r)
 
         db.session.add(nu)
         db.session.commit()
