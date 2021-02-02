@@ -1,5 +1,5 @@
 import json
-from flask import render_template, url_for, request
+from flask import render_template, url_for, request, redirect
 
 from app import pugh_app, db
 from app.models import User, Listing
@@ -42,6 +42,8 @@ def add_listing():
 
         db.session.add(nu)
         db.session.commit()
+        return redirect(url_for('index'))
+
     return render_template('add_listing.html', title='New Listing', form=form, ctq=ctq)
 
 
