@@ -13,10 +13,19 @@
             {% endfor %}
         </p>
         <p>
-            {% for i in ctq %}
-                {{ ctq[loop.index0] }}
-                {{ form.ctq_1 }}
-            {% endfor %}
+            {{ ctq[0] }}<br>
+            {{ form.ctq_1.label }}
+            {{ (form.ctq_1(size=32)) }}<br>
+        </p>
+        <p>
+            {{ ctq[1] }}<br>
+            {{ form.ctq_2.label }}
+            {{ (form.ctq_2(size=32)) }}<br>
+        </p>
+        <p>
+            {{ ctq[2] }}<br>
+            {{ form.ctq_3.label }}
+            {{ (form.ctq_3(size=32)) }}<br>
         </p>
     </form>
 </html>

@@ -29,10 +29,10 @@ def index():
 
 @pugh_app.route('/add_listing', methods=['GET', 'POST'])
 def add_listing():
-    form = AddForm()
     u = User.query.get(1)
-
     ctq = json.loads(u.ctq)
+
+    form = AddForm()
 
     if form.validate_on_submit():
         l = form.listing_name.data
