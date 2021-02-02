@@ -1,5 +1,7 @@
 from flask import render_template, url_for, request, redirect, flash
 from flask_login import current_user, login_user, logout_user, login_required
+from wtforms import IntegerField, SubmitField
+from wtforms.validators import AnyOf
 
 from werkzeug.urls import url_parse
 
@@ -55,21 +57,20 @@ def add_listing():
     user = current_user.id
     ctq = current_user.ctq
 
-    form = AddForm()
+    class F(AddForm):
+        pass
+
+    for i in ctq:
+        setattr(F, i, IntegerField(label=i, validators=[AnyOf([1, 5, 9])]))
+    setattr(F, 'submit', SubmitField('Update')
+)
+    form = F()
 
     if form.validate_on_submit():
         listing = form.listing_name.data
-        rating = [
-            form.ctq_1.data,
-            form.ctq_2.data,
-            form.ctq_3.data,
-            form.ctq_4.data,
-            form.ctq_5.data,
-            form.ctq_6.data,
-            form.ctq_7.data
-        ]
 
-        ratings = [i for i in rating if i]
+        ratings = [form.get_data(i) for i in form.data if i in ctq]
+
         total = sum(ratings)
         ratings.append(total)
 
