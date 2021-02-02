@@ -7,7 +7,6 @@
     <h2>Here are your current listings:</h2>
     <body>
         <table style="width:100%">
-            <caption>CTQ's</caption>
             <tr>
                 <th>
                     Listing
@@ -21,9 +20,9 @@
             </tr>
             {% for listing in listings %}
             <tr>
-                <td align='center'>{{ listing.listing_name }}</td>
+                <td>{{ listing.listing_name }}</td>
                     {% for rate in listing.rating %}
-                        <td align='center'>{{ rate }}</td>
+                        <td>{{ rate }}</td>
                     {% endfor %}
             </tr>
             {% endfor %}

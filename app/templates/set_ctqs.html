@@ -1,60 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.ctq_1.label }}
-        {{ (form.ctq_1(size=32)) }}<br>
-        {% for error in form.ctq_1.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.ctq_2.label }}
-        {{ (form.ctq_2(size=32)) }}<br>
-        {% for error in form.ctq_2.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.ctq_3.label }}
-        {{ (form.ctq_3(size=32)) }}<br>
-        {% for error in form.ctq_3.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.ctq_4.label }}
-        {{ (form.ctq_4(size=32)) }}<br>
-        {% for error in form.ctq_4.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.ctq_5.label }}
-        {{ (form.ctq_5(size=32)) }}<br>
-        {% for error in form.ctq_5.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.ctq_6.label }}
-        {{ (form.ctq_6(size=32)) }}<br>
-        {% for error in form.ctq_6.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.ctq_7.label }}
-        {{ (form.ctq_7(size=32)) }}<br>
-        {% for error in form.ctq_7.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>{{ form.submit() }}</p>
-</form>
+    <h1>Set your Critical To Quality criteria</h1>
+    <h2>Pick between 3 and 7</h2>
+    {% if form %}
+            {{ wtf.quick_form(form) }}
+            <br>
+    {% endif %}
 {% endblock %}
 </html>
