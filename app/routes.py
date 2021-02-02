@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 
 from app import pugh_app, db
 from app.models import User, Listing
-from app.forms import AddForm, LoginForm
+from app.forms import AddForm, LoginForm, NewUser
 
 
 @pugh_app.route('/', methods=['GET', 'POST'])
@@ -14,6 +14,8 @@ from app.forms import AddForm, LoginForm
 def index():
     listings = current_user.user_listings()
     col_headers = current_user.ctq
+    if len(col_headers) == 0:
+        redirect(url_for('set_ctqs'))
 
     return render_template('index.html',
                            title='Home Page',
@@ -79,3 +81,15 @@ def add_listing():
     return render_template('add_listing.html', title='New Listing', form=form, ctq=ctq)
 
 
+@pugh_app.route('/new_user', methods=['GET', 'POST'])
+def new_user():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = NewUser()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('new_user.html', form=form)
