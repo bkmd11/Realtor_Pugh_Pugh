@@ -10,6 +10,8 @@
         <a href="{{ url_for('add_listing') }}">New Listing</a>
         {% if current_user.is_anonymous %}
         <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">Logout</a>
         {% endif %}
     </div>
     {% block content %}{% endblock %}

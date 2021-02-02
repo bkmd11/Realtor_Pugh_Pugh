@@ -11,5 +11,6 @@ pugh_app.config.from_object(Config)
 db = SQLAlchemy(pugh_app)
 migrate = Migrate(pugh_app, db)
 login = LoginManager(pugh_app)
+login.login_view = 'login'
 
 from app import routes

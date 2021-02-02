@@ -40,6 +40,12 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
+@pugh_app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
 @pugh_app.route('/add_listing', methods=['GET', 'POST'])
 @login_required
 def add_listing():
