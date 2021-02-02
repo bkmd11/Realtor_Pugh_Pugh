@@ -9,35 +9,81 @@
         <form action="" method="post">
             {{ form.hidden_tag() }}
             <p>
-                {{ form.listing_name.label }}<br>
+                {{ form.listing_name.label }}
                 {{ (form.listing_name(size=32)) }}<br>
                 {% for error in form.listing_name.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
-                {{ ctq[0] }}<br>
-                {{ form.ctq_1.label }}
-                {{ (form.ctq_1(size=32)) }}<br>
-                {% for error in form.listing_name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
+                {% if ctq[0] | length != 0 %}
+                    {{ ctq[0] }}<br>
+                    {{ form.ctq_1.label }}
+                    {{ (form.ctq_1(size=32)) }}<br>
+                    {% for error in form.ctq_1.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
             </p>
             <p>
-                {{ ctq[1] }}<br>
-                {{ form.ctq_2.label }}
-                {{ (form.ctq_2(size=32)) }}<br>
-                {% for error in form.listing_name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
+                {% if ctq[1] | length != 0 %}
+                    {{ ctq[1] }}<br>
+                    {{ form.ctq_2.label }}
+                    {{ (form.ctq_2(size=32)) }}<br>
+                    {% for error in form.ctq_2.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
             </p>
             <p>
-                {{ ctq[2] }}<br>
-                {{ form.ctq_3.label }}
-                {{ (form.ctq_3(size=32)) }}<br>
-                {% for error in form.listing_name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
+                {% if ctq[2] | length != 0 %}
+                    {{ ctq[2] }}<br>
+                    {{ form.ctq_3.label }}
+                    {{ (form.ctq_3(size=32)) }}<br>
+                    {% for error in form.ctq_3.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <p>
+                {% if ctq[3] | length != 0 %}
+                    {{ ctq[4] }}<br>
+                    {{ form.ctq_4.label }}
+                    {{ (form.ctq_4(size=32)) }}<br>
+                    {% for error in form.ctq_4.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <p>
+                {% if ctq[4] | length != 0 %}
+                    {{ ctq[5] }}<br>
+                    {{ form.ctq_5.label }}
+                    {{ (form.ctq_5(size=32)) }}<br>
+                    {% for error in form.ctq_5.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <p>
+                {% if ctq[5] | length != 0 %}
+                    {{ ctq[6] }}<br>
+                    {{ form.ctq_6.label }}
+                    {{ (form.ctq_6(size=32)) }}<br>
+                    {% for error in form.ctq_6.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <p>
+                {% if ctq[6] | length != 0 %}
+                    {{ ctq[7] }}<br>
+                    {{ form.ctq_7.label }}
+                    {{ (form.ctq_7(size=32)) }}<br>
+                    {% for error in form.ctq_7.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {% endif %}
             </p>
             <p>{{ form.submit() }}</p>
         </form>

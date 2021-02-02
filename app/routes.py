@@ -56,12 +56,21 @@ def add_listing():
 
     if form.validate_on_submit():
         listing = form.listing_name.data
-        rating = [form.ctq_1.data, form.ctq_2.data, form.ctq_3.data]
+        rating = [
+            form.ctq_1.data,
+            form.ctq_2.data,
+            form.ctq_3.data,
+            form.ctq_4.data,
+            form.ctq_5.data,
+            form.ctq_6.data,
+            form.ctq_7.data
+        ]
 
-        total = sum(rating)
-        rating.append(total)
+        ratings = [i for i in rating if i]
+        total = sum(ratings)
+        ratings.append(total)
 
-        nu = Listing(listing_name=listing, user_id=user.id, rating=rating)
+        nu = Listing(listing_name=listing, user_id=user.id, rating=ratings)
 
         db.session.add(nu)
         db.session.commit()

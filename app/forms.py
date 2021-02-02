@@ -1,14 +1,17 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, AnyOf
+from wtforms.validators import DataRequired, AnyOf, Optional
 
 
 class AddForm(FlaskForm):
-    # TODO: figure out how to make this form dynamic
     listing_name = StringField('Listing Name', validators=[DataRequired()])
-    ctq_1 = IntegerField('Grade', validators=[DataRequired(), AnyOf([1, 5, 9])])
-    ctq_2 = IntegerField('Grade', validators=[DataRequired(), AnyOf([1, 5, 9])])
-    ctq_3 = IntegerField('Grade', validators=[DataRequired(), AnyOf([1, 5, 9])])
+    ctq_1 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
+    ctq_2 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
+    ctq_3 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
+    ctq_4 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
+    ctq_5 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
+    ctq_6 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
+    ctq_7 = IntegerField('Grade', validators=[AnyOf([1, 5, 9]), Optional()])
 
     submit = SubmitField('Update')
 
