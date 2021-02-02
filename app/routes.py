@@ -44,16 +44,19 @@ def login():
 @pugh_app.route('/add_listing', methods=['GET', 'POST'])
 @login_required
 def add_listing():
-    u = User.query.get(1)
+    user = User.query.get(1)
     ctq = current_user.ctq
 
     form = AddForm()
 
     if form.validate_on_submit():
-        l = form.listing_name.data
-        r = [form.ctq_1.data, form.ctq_2.data, form.ctq_3.data]
+        listing = form.listing_name.data
+        rating = [form.ctq_1.data, form.ctq_2.data, form.ctq_3.data]
 
-        nu = Listing(listing_name=l, user_id=u.id, rating=r)
+        total = sum(rating)
+        rating.append(total)
+
+        nu = Listing(listing_name=listing, user_id=user.id, rating=rating)
 
         db.session.add(nu)
         db.session.commit()
