@@ -1,4 +1,3 @@
-import json
 from flask import render_template, url_for, request, redirect, flash
 from flask_login import current_user, login_user, logout_user, login_required
 

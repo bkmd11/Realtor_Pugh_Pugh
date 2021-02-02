@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, AnyOf
 
 
 class AddForm(FlaskForm):
+    # TODO: figure out how to make this form dynamic
     listing_name = StringField('Listing Name', validators=[DataRequired()])
     ctq_1 = IntegerField('Grade', validators=[DataRequired(), AnyOf([1, 5, 9])])
     ctq_2 = IntegerField('Grade', validators=[DataRequired(), AnyOf([1, 5, 9])])

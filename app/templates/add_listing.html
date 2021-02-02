@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<h1>
-    New Listing
-</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.listing_name.label }}<br>
-            {{ (form.listing_name(size=32)) }}<br>
-            {% for error in form.listing_name.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ ctq[0] }}<br>
-            {{ form.ctq_1.label }}
-            {{ (form.ctq_1(size=32)) }}<br>
-        </p>
-        <p>
-            {{ ctq[1] }}<br>
-            {{ form.ctq_2.label }}
-            {{ (form.ctq_2(size=32)) }}<br>
-        </p>
-        <p>
-            {{ ctq[2] }}<br>
-            {{ form.ctq_3.label }}
-            {{ (form.ctq_3(size=32)) }}<br>
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+        New Listing
+    </h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.listing_name.label }}<br>
+                {{ (form.listing_name(size=32)) }}<br>
+                {% for error in form.listing_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ ctq[0] }}<br>
+                {{ form.ctq_1.label }}
+                {{ (form.ctq_1(size=32)) }}<br>
+                {% for error in form.listing_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ ctq[1] }}<br>
+                {{ form.ctq_2.label }}
+                {{ (form.ctq_2(size=32)) }}<br>
+                {% for error in form.listing_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ ctq[2] }}<br>
+                {{ form.ctq_3.label }}
+                {{ (form.ctq_3(size=32)) }}<br>
+                {% for error in form.listing_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+{% endblock %}
 </html>

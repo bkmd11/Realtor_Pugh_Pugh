@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Realtor Pugh Pugh</title>
+</head>
+<body>
+    <div>
+        Realtor Pugh Pugh:
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('add_listing') }}">New Listing</a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+    </div>
+    {% block content %}{% endblock %}
+
+</body>
+</html>
