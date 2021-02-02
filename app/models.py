@@ -32,11 +32,10 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def user_listings(self):
-        listings = Listing.query.join(
-            User, (User.id == Listing.user_id)
-        )
+        listings = Listing.query.filter(Listing.user_id == self.id)
 
         return listings
+
 
 class Listing(db.Model):
     id = Column(Integer, primary_key=True)

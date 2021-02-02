@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 
 from app import pugh_app, db
 from app.models import User, Listing
-from app.forms import AddForm, LoginForm, NewUser
+from app.forms import AddForm, LoginForm, NewUser, SetCTQs
 
 
 @pugh_app.route('/', methods=['GET', 'POST'])
@@ -14,8 +14,9 @@ from app.forms import AddForm, LoginForm, NewUser
 def index():
     listings = current_user.user_listings()
     col_headers = current_user.ctq
-    if len(col_headers) == 0:
-        redirect(url_for('set_ctqs'))
+
+    if col_headers is None:
+        return redirect(url_for('set_ctqs'))
 
     return render_template('index.html',
                            title='Home Page',
@@ -51,7 +52,7 @@ def logout():
 @pugh_app.route('/add_listing', methods=['GET', 'POST'])
 @login_required
 def add_listing():
-    user = User.query.get(1)
+    user = current_user.id
     ctq = current_user.ctq
 
     form = AddForm()
@@ -72,7 +73,7 @@ def add_listing():
         total = sum(ratings)
         ratings.append(total)
 
-        nu = Listing(listing_name=listing, user_id=user.id, rating=ratings)
+        nu = Listing(listing_name=listing, user_id=user, rating=ratings)
 
         db.session.add(nu)
         db.session.commit()
@@ -91,5 +92,29 @@ def new_user():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        flash('You are now registered!')
         return redirect(url_for('login'))
     return render_template('new_user.html', form=form)
+
+
+@pugh_app.route('/set_ctqs', methods=['GET', 'POST'])
+@login_required
+def set_ctqs():
+    form = SetCTQs()
+
+    if form.validate_on_submit():
+        ctq = [
+            form.ctq_1.data,
+            form.ctq_2.data,
+            form.ctq_3.data,
+            form.ctq_4.data,
+            form.ctq_5.data,
+            form.ctq_6.data,
+            form.ctq_7.data
+        ]
+        ctqs = [i for i in ctq if i]
+
+        current_user.ctq = ctqs
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('set_ctqs.html', form=form)

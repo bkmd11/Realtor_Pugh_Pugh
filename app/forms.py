@@ -30,3 +30,15 @@ class NewUser(FlaskForm):
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
+
+
+class SetCTQs(FlaskForm):
+    ctq_1 = StringField('Criteria:', validators=[Optional()])
+    ctq_2 = StringField('Criteria:', validators=[Optional()])
+    ctq_3 = StringField('Criteria:', validators=[Optional()])
+    ctq_4 = StringField('Criteria:', validators=[Optional()])
+    ctq_5 = StringField('Criteria:', validators=[Optional()])
+    ctq_6 = StringField('Criteria:', validators=[Optional()])
+    ctq_7 = StringField('Criteria:', validators=[Optional()])
+
+    submit = SubmitField('Done')
