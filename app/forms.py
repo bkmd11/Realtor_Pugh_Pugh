@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
+from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
 
 
@@ -8,3 +8,5 @@ class AddForm(FlaskForm):
     ctq_1 = IntegerField('Grade')
     ctq_2 = IntegerField('Grade')
     ctq_3 = IntegerField('Grade')
+
+    submit = SubmitField('Update')
