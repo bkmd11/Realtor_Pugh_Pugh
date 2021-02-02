@@ -20,8 +20,7 @@ def index():
    #  listings = [
    #      {'listing': listing.listing_name, 'rating': rating}
    #  ]
-    print(listings)
-    col_headers = json.loads(current_user.ctq)
+    col_headers = current_user.ctq
 
     return render_template('index.html',
                            title='Home Page',

@@ -23,7 +23,7 @@
 
         {% for listing in listings %}
         <tr>
-            <td align='center'>{{ listing.listing }}</td>
+            <td align='center'>{{ listing.listing_name }}</td>
                 {% for rate in listing.rating %}
                     <td align='center'>{{ rate }}</td>
                 {% endfor %}

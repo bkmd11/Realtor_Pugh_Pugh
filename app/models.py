@@ -36,6 +36,7 @@ class User(UserMixin, db.Model):
             User, (User.id == Listing.user_id)
         )
 
+        return listings
 
 class Listing(db.Model):
     id = Column(Integer, primary_key=True)
