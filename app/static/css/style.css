@@ -7,14 +7,20 @@ table {
 }
 
 th {
- border: 1px solid black;
- text-align: center;
- height: 70px;
- font-size: x-large;
+    border: 1px solid black;
+    text-align: center;
+    height: 70px;
+    font-size: x-large;
 }
 
 td {
- border: 1px solid black;
- text-align: center;
- font-size: large;
+   border: 1px solid black;
+   text-align: center;
+   font-size: large;
+}
+
+.navbar-custom {
+    background-color: #B9C4ED;
+    font-size : medium;
+    padding: .75rem 1rem;
 }
