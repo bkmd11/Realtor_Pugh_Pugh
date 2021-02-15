@@ -14,7 +14,7 @@ from app.forms import AddForm, LoginForm, NewUser, SetCTQs
 @pugh_app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    listings = current_user.user_listings()
+    listings = current_user.user_listings().order_by(Listing.total.desc())
     col_headers = current_user.ctq
 
     if col_headers is None:
@@ -72,9 +72,8 @@ def add_listing():
         ratings = [form.get_data(i) for i in form.data if i in ctq]
 
         total = sum(ratings)
-        ratings.append(total)
 
-        nu = Listing(listing_name=listing, user_id=user, rating=ratings)
+        nu = Listing(listing_name=listing, user_id=user, rating=ratings, total=total)
 
         db.session.add(nu)
         db.session.commit()

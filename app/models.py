@@ -43,6 +43,7 @@ class Listing(db.Model):
     listing_name = Column(String(140))
     user_id = Column(Integer, ForeignKey('user.id'))
     rating = Column(JSON)
+    total = Column(Integer)
 
     def __repr__(self):
 
