@@ -19,12 +19,12 @@ def index():
 
     if col_headers is None:
         return redirect(url_for('set_ctqs'))
-
     return render_template('index.html',
                            title='Home Page',
                            username=current_user.username,
                            listings=listings,
-                           col_headers=col_headers)
+                           col_headers=col_headers,
+                           max_total=current_user.max_total)
 
 
 @pugh_app.route('/login', methods=['GET', 'POST'])
@@ -115,6 +115,7 @@ def set_ctqs():
         ctqs = [i for i in ctq if i]
 
         current_user.ctq = ctqs
+        current_user.max_total = 9 * len(ctqs)
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('set_ctqs.html', form=form)

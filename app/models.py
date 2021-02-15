@@ -14,12 +14,12 @@ def load_user(id):
 
 
 class User(UserMixin, db.Model):
-    # TODO: add user profile picture
     id = Column(Integer, primary_key=True)
     username = Column(String(64), index=True, unique=True)
     email = Column(String(120), index=True, unique=True)
     password_hash = Column(String(128))
     ctq = Column(JSON)
+    max_total = Column(Integer)
 
     listings = db.relationship('Listing', backref='user')
 
