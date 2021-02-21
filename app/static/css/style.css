@@ -34,3 +34,19 @@ tr:nth-child(odd) {
     font-size : medium;
     padding: .75rem 1rem;
 }
+
+.perfect-fit {
+    background-color: #149414;
+}
+
+.good-fit {
+    background-color: #6EEE6E;
+}
+
+.bad-fit {
+    background-color: #FF9696;
+}
+
+.not-fit {
+    background-color: #FF2828;
+}

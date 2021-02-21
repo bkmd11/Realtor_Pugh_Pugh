@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--TODO: look into coloring the total green after certain point. might need JS -->
 {% extends "base.html" %}
 
 {% block app_content %}
@@ -24,11 +23,18 @@
                     {% for rate in listing.rating %}
                         <td>{{ rate }}</td>
                     {% endfor %}
-                <td>{{ listing.total }}</td>
+                {% if listing.total == max_total %}
+                    <td class="perfect-fit">{{ listing.total }}</td>
+                {% elif listing.total >= good_range %}
+                    <td class="good-fit">{{ listing.total }}</td>
+                {% elif listing.total >= bad_range %}
+                    <td class="bad-fit">{{ listing.total }}</td>
+                {% else %}
+                    <td class="not-fit">{{ listing.total }}</td>
+                {% endif %}
             </tr>
             {% endfor %}
 
         </table>
     </body>
 {% endblock %}
-</html>

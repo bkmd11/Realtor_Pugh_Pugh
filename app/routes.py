@@ -16,6 +16,8 @@ from app.forms import AddForm, LoginForm, NewUser, SetCTQs
 def index():
     listings = current_user.user_listings().order_by(Listing.total.desc())
     col_headers = current_user.ctq
+    good_range = current_user.max_total*.8
+    bad_range = current_user.max_total*.5
 
     if col_headers is None:
         return redirect(url_for('set_ctqs'))
@@ -24,7 +26,9 @@ def index():
                            username=current_user.username,
                            listings=listings,
                            col_headers=col_headers,
-                           max_total=current_user.max_total)
+                           max_total=current_user.max_total,
+                           good_range=good_range,
+                           bad_range=bad_range)
 
 
 @pugh_app.route('/login', methods=['GET', 'POST'])
