@@ -21,4 +21,7 @@ pugh_app.register_blueprint(auth_bp, url_prefix='/auth')
 from app.new_user import bp as new_user_bp
 pugh_app.register_blueprint(new_user_bp, url_prefix='/new_user')
 
-from app import routes
+from app.main import bp as main_bp
+pugh_app.register_blueprint(main_bp, url_prefix='/main')
+
+from app.main import routes

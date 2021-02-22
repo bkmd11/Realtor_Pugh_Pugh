@@ -3,13 +3,14 @@ from flask_login import current_user, login_required
 from wtforms import IntegerField, SubmitField
 from wtforms.validators import AnyOf
 
-from app import pugh_app, db
+from app import db
+from app.main import bp
 from app.models import Listing
-from app.forms import AddForm
+from app.main.forms import AddForm
 
 
-@pugh_app.route('/', methods=['GET', 'POST'])
-@pugh_app.route('/index', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     listings = current_user.user_listings().order_by(Listing.total.desc())
@@ -18,8 +19,8 @@ def index():
     bad_range = current_user.max_total*.5
 
     if col_headers is None:
-        return redirect(url_for('set_ctqs'))
-    return render_template('index.html',
+        return redirect(url_for('main.set_ctqs'))
+    return render_template('main/index.html',
                            title='Home Page',
                            username=current_user.username,
                            listings=listings,
@@ -29,7 +30,7 @@ def index():
                            bad_range=bad_range)
 
 
-@pugh_app.route('/add_listing', methods=['GET', 'POST'])
+@bp.route('/add_listing', methods=['GET', 'POST'])
 @login_required
 def add_listing():
     user = current_user.id
@@ -55,6 +56,6 @@ def add_listing():
 
         db.session.add(nu)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
-    return render_template('add_listing.html', title='New Listing', form=form, ctq=ctq)
+    return render_template('main/add_listing.html', title='New Listing', form=form, ctq=ctq)
