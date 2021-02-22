@@ -10,5 +10,5 @@ def make_shell_context():
 
 # TODO:
 #    unittests
-#    welcome/explanation page for new visitors
 #    instructions for ctq selection
+#    Handle sql duplication errors

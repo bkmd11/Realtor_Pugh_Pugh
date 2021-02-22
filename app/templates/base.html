@@ -9,11 +9,13 @@
 {% block navbar %}
     <div class="navbar navbar-custom">
        Realtor Pugh Pugh:
-        <a href="{{ url_for('main.index') }}">Home</a>
-        <a href="{{ url_for('main.add_listing') }}">New Listing</a>
         {% if current_user.is_anonymous %}
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('new_user.new_user') }}">Register</a>
         <a href="{{ url_for('auth.login') }}">Login</a>
         {% else %}
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('main.add_listing') }}">New Listing</a>
         <a href="{{ url_for('auth.logout') }}">Logout</a>
         {% endif %}
     </div>

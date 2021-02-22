@@ -9,7 +9,6 @@ from app.models import Listing
 from app.main.forms import AddForm
 
 
-@bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():

@@ -29,6 +29,11 @@ tr:nth-child(odd) {
     background-color: #B9C4ED;
 }
 
+p {
+    align: left;
+    font-size: large;
+}
+
 .navbar-custom {
     background-color: #B9C4ED;
     font-size : medium;
