@@ -34,6 +34,15 @@ p {
     font-size: large;
 }
 
+body {
+    text-align: center;
+}
+
+form {
+    width: 40%;
+    display: inline-block;
+}
+
 .navbar-custom {
     background-color: #B9C4ED;
     font-size : medium;

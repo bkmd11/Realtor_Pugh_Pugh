@@ -7,10 +7,10 @@
 {% endblock %}
 
 {% block navbar %}
-    <div class="navbar navbar-custom">
+    <div class="navbar navbar-custom" align="left">
        Realtor Pugh Pugh:
         {% if current_user.is_anonymous %}
-        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('home') }}">Home</a>
         <a href="{{ url_for('new_user.new_user') }}">Register</a>
         <a href="{{ url_for('auth.login') }}">Login</a>
         {% else %}
