@@ -14,11 +14,13 @@ from app.main.forms import AddForm
 def index():
     listings = current_user.user_listings().order_by(Listing.total.desc())
     col_headers = current_user.ctq
-    good_range = current_user.max_total*.8
-    bad_range = current_user.max_total*.5
 
     if col_headers is None:
-        return redirect(url_for('main.set_ctqs'))
+        return redirect(url_for('new_user.set_ctqs'))
+
+    good_range = current_user.max_total * .8
+    bad_range = current_user.max_total * .5
+
     return render_template('main/index.html',
                            title='Home Page',
                            username=current_user.username,

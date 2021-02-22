@@ -42,5 +42,5 @@ def set_ctqs():
         current_user.ctq = ctqs
         current_user.max_total = 9 * len(ctqs)
         db.session.commit()
-        return redirect(url_for('index'))
-    return render_template('set_ctqs.html', form=form)
+        return redirect(url_for('main.index'))
+    return render_template('new_user/set_ctqs.html', form=form)
