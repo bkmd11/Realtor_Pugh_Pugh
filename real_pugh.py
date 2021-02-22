@@ -12,3 +12,5 @@ def make_shell_context():
 #    unittests
 #    instructions for ctq selection
 #    Handle sql duplication errors
+#    error pages
+#    add click-able link/check for link in listing field
