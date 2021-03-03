@@ -1,5 +1,6 @@
 body {
   background-color: #E8E8EE;
+  text-align: center;
 }
 
 table {
@@ -34,9 +35,6 @@ p {
     font-size: large;
 }
 
-body {
-    text-align: center;
-}
 
 form {
     width: 40%;
