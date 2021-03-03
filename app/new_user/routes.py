@@ -22,6 +22,12 @@ def new_user():
     return render_template('new_user/new_user.html', form=form)
 
 
+@bp.route('/instructions')
+@login_required
+def ctq_instructions():
+    return render_template('new_user/ctq_instructions.html')
+
+
 @bp.route('/set_ctqs', methods=['GET', 'POST'])
 @login_required
 def set_ctqs():

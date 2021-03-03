@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block app_content %}
+    <h1>
+        Thank you for signing up for Realtor Pugh Pugh
+    </h1>
+    <h2>
+        It is time to set your "Critical To Quality" attributes!
+    </h2>
+    <p align="left">
+        What that means is setting the criteria that is really most important to you in your home.
+        These are going to be different for every individual or couple looking to purchase, so it is very important
+        that you take the time to reflect on what is really important. Things like "Two car garage" or "Ranch style"
+        do not make good CTQ's given that you probably wont even look at houses that don't have those.
+        But things like "Proximity to such and such activity" or "Privacy" could make good CTQ's.
+        Those attributes tend to be a little less obvious in a listing. Taking some time to discuss and establish
+        good CTQ's will give you much more confidence when it finally comes time to make the big purchase
+    </p>
+    <a href="{{ url_for('new_user.set_ctqs') }}">Continue!</a>
+{% endblock %}
