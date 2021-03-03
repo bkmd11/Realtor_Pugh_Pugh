@@ -16,7 +16,7 @@ def index():
     col_headers = current_user.ctq
 
     if col_headers is None:
-        return redirect(url_for('new_user.set_ctqs'))
+        return redirect(url_for('new_user.instructions'))
 
     good_range = current_user.max_total * .8
     bad_range = current_user.max_total * .5
