@@ -1,6 +1,8 @@
 from flask import render_template, url_for, redirect, flash
 from flask_login import current_user, login_required
 
+import sqlite3
+
 from app import db
 from app.new_user import bp
 from app.models import User
@@ -13,12 +15,15 @@ def new_user():
         return redirect(url_for('index'))
     form = NewUser()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('You are now registered!')
-        return redirect(url_for('auth.login'))
+        if db.session.query(User.email).filter_by(email=form.email.data).first() is None:
+            user = User(username=form.username.data, email=form.email.data)
+            user.set_password(form.password.data)
+            db.session.add(user)
+            db.session.commit()
+            flash('You are now registered!')
+            return redirect(url_for('auth.login'))
+        else:
+            flash('The email you used already has an account')
     return render_template('new_user/new_user.html', form=form)
 
 

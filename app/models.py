@@ -15,7 +15,7 @@ def load_user(id):
 
 class User(UserMixin, db.Model):
     id = Column(Integer, primary_key=True)
-    username = Column(String(64), index=True, unique=True)
+    username = Column(String(64), index=True)
     email = Column(String(120), index=True, unique=True)
     password_hash = Column(String(128))
     ctq = Column(JSON)
