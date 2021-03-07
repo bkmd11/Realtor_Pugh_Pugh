@@ -15,14 +15,14 @@ login = LoginManager(pugh_app)
 login.login_view = 'auth.login'
 bootstrap = Bootstrap(pugh_app)
 
+from app.errors import bp as error_bp
+pugh_app.register_blueprint(error_bp)
+
 from app.auth import bp as auth_bp
 pugh_app.register_blueprint(auth_bp, url_prefix='/auth')
 
 from app.new_user import bp as new_user_bp
 pugh_app.register_blueprint(new_user_bp, url_prefix='/new_user')
-
-from app.errors import bp as error_bp
-pugh_app.register_blueprint(error_bp)
 
 from app.main import bp as main_bp
 pugh_app.register_blueprint(main_bp, url_prefix='/main')
